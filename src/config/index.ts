@@ -1,0 +1,1 @@
+export const STATE_TIME_IN_MILLISECONDS = 60_000;
