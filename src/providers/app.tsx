@@ -1,13 +1,16 @@
-import { QueryClientProvider } from '@tanstack/react-query';
+import { QueryClientProvider } from "@tanstack/react-query";
+import { RouterProvider } from "@tanstack/react-router";
 
-import { queryClient } from '@/lib/react-query';
+import { queryClient } from "@/lib/tanstack-query";
+import { router } from "@/routes";
+import { HelmetProvider } from "react-helmet-async";
 
-type AppProviderProps = {
-  children: React.ReactNode;
-};
-
-export const AppProvider = ({ children }: AppProviderProps) => {
+export const AppProvider = () => {
   return (
-    <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+    <HelmetProvider>
+      <QueryClientProvider client={queryClient}>
+        <RouterProvider router={router} />
+      </QueryClientProvider>
+    </HelmetProvider>
   );
 };
